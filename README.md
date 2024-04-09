@@ -4,3 +4,5 @@ This is my Neovim configuration.
 ```
 git clone https://github.com/lhqdecimy/leovim ~/.config/nvim
 ```
+## Features
+It is easy to learn. Just read the files. You will find that this configuration is simple.
