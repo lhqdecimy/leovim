@@ -20,12 +20,12 @@ cmp.setup {
     },
 
     sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "snippy" },
-    },
-    {
-        { name = "buffer" },
-    }),
+            { name = "nvim_lsp" },
+            { name = "snippy" },
+        },
+        {
+            { name = "buffer" },
+        }),
 }
 cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
@@ -36,11 +36,11 @@ cmp.setup.cmdline({ "/", "?" }, {
 cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-        { name = "path" }
-    },
-    {
-        { name = "cmdline" }
-    }),
+            { name = "path" }
+        },
+        {
+            { name = "cmdline" }
+        }),
     matching = { disallow_symbol_nonprefix_matching = false },
 })
 
@@ -70,21 +70,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local buf = vim.lsp.buf
         local share = require "share"
         share.mapkey {
-            { "n", "gD", buf.declaration, opts },
-            { "n", "gd", buf.definition, opts },
-            { "n", "K", buf.hover, opts },
-            { "n", "gi", buf.implementation, opts },
-            { "n", "<C-k>", buf.signature_help, opts },
-            { "n", "<Leader>wa", buf.add_workspace_folder, opts },
-            { "n", "<Leader>wr", buf.remove_workspace_folder, opts },
-            { "n", "<Leader>wl", function()
-                print(vim.inspect(buf.list_workspace_folders()))
-            end, opts},
-            { "n", "<Leader>D", buf.type_definition, opts },
-            { "n", "<Leader>R",buf.rename, opts },
-            { { "n", "v" }, "<Leader>ca", buf.code_action, opts },
-            { "n", "gr", buf.references, opts},
-            { "n", "F", function() buf.format { async = true } end, opts },
+            { "n",          "gD",         buf.declaration,     opts },
+            { "n",          "gd",         buf.definition,      opts },
+            { "n",          "K",          buf.hover,           opts },
+            { "n",          "gi",         buf.implementation,  opts },
+            { "n",          "<Leader>R",  buf.rename,          opts },
+            { { "n", "v" }, "<Leader>ca", buf.code_action,     opts },
+            { "n",          "gr",         buf.references,      opts },
+            {
+                "n",
+                "F",
+                function()
+                    buf.format { async = true }
+                    vim.cmd "LspRestart"
+                end,
+                opts
+            },
         }
     end,
 })
