@@ -27,6 +27,10 @@ require "lazy".setup {
     "lukas-reineke/indent-blankline.nvim",
     -- Scroll
     "karb94/neoscroll.nvim",
+    -- Syntax
+    "nvim-treesitter/nvim-treesitter",
+    -- Rainbow
+    "HiPhish/nvim-ts-rainbow2",
     -- Messages
     {
         "folke/noice.nvim",
@@ -36,10 +40,7 @@ require "lazy".setup {
         },
     },
     -- Status Line
-    { "nvim-lualine/lualine.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
-
-    ------ Utils ------
-    -- Terminal
+    { "nvim-lualine/lualine.nvim",     dependencies = "nvim-tree/nvim-web-devicons" }, ------ Utils ------ Terminal
     "akinsho/toggleterm.nvim",
     -- Which Key
     "folke/which-key.nvim",
@@ -47,18 +48,20 @@ require "lazy".setup {
     "hadronized/hop.nvim",
     -- Auto Pairs
     "m4xshen/autoclose.nvim",
-    -- Sessions
-    "natecraddock/sessions.nvim",
-    -- Trouble
-    { "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
-    -- Tree
-    { "nvim-tree/nvim-tree.lua", dependencies = "nvim-tree/nvim-web-devicons" },
-    -- Buffers
-    { "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
-    -- Searching
+    -- Outline
+    "hedyhli/outline.nvim",
+    -- Last place
+    "ethanholz/nvim-lastplace",
+    -- trouble
+    { "folke/trouble.nvim",            dependencies = "nvim-tree/nvim-web-devicons" },
+    -- tree
+    { "nvim-tree/nvim-tree.lua",       dependencies = "nvim-tree/nvim-web-devicons" },
+    -- buffers
+    { "akinsho/bufferline.nvim",       dependencies = "nvim-tree/nvim-web-devicons" },
+    -- searching
     { "nvim-telescope/telescope.nvim", dependencies = "nvim-lua/plenary.nvim" },
-    -- Mru
-    { "ilAYAli/scMRU.nvim", dependencies = "kkharji/sqlite.lua" },
+    -- mru
+    { "ilayali/scmru.nvim",            dependencies = "kkharji/sqlite.lua" },
 
     ------ Lsp ------
     -- Installation

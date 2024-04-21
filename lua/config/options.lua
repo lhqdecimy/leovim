@@ -1,6 +1,7 @@
 ----------------------------------------
 ------------ Basic Options -------------
 ----------------------------------------
+local share = require"share"
 local opt = vim.opt
 
 ------ Apearance ------
@@ -24,6 +25,15 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop=4
 opt.expandtab = true
+opt.autoindent = true
+opt.smartindent = true
+share.shift {
+    { "*", 4 },
+    { "c", 2 },
+    { "cpp", 2 },
+    { "h", 2 },
+    { "hpp", 2 },
+}
 
 ------ Searching ------
 opt.incsearch = true
@@ -32,6 +42,8 @@ opt.ignorecase = true
 opt.smartcase = true
 
 ------ Others ------
+-- Clipboard
+opt.clipboard = "unnamedplus"
 -- Mouse
 opt.mouse = "a"
 vim.cmd"aunmenu PopUp.-1-"

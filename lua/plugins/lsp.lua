@@ -2,6 +2,8 @@
 ------------ Lsp ------------
 -----------------------------
 
+local share = require "share"
+
 ------ Completing ------
 local cmp = require "cmp"
 cmp.setup {
@@ -46,6 +48,8 @@ cmp.setup.cmdline(":", {
 ------ Installation ------
 require "mason".setup {}
 require "mason-lspconfig".setup {
+    -- Installed
+    ensure_installed = require "mylsp",
     -- Auto Installation
     automatic_installation = true,
 }
@@ -67,15 +71,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         local opts = { buffer = ev.buf }
         local buf = vim.lsp.buf
-        local share = require "share"
         share.mapkey {
-            { "n",          "gD",         buf.declaration,     opts },
-            { "n",          "gd",         buf.definition,      opts },
-            { "n",          "K",          buf.hover,           opts },
-            { "n",          "gi",         buf.implementation,  opts },
-            { "n",          "<Leader>R",  buf.rename,          opts },
-            { { "n", "v" }, "<Leader>ca", buf.code_action,     opts },
-            { "n",          "gr",         buf.references,      opts },
+            { "n",          "gD",         buf.declaration,    opts },
+            { "n",          "gd",         buf.definition,     opts },
+            { "n",          "K",          buf.hover,          opts },
+            { "n",          "gi",         buf.implementation, opts },
+            { "n",          "<Leader>R",  buf.rename,         opts },
+            { { "n", "v" }, "<Leader>ca", buf.code_action,    opts },
+            { "n",          "gr",         buf.references,     opts },
             {
                 "n",
                 "F",
@@ -88,3 +91,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         }
     end,
 })
+
+------ Outline ------
+require "outline".setup {}
+share.mapkey {
+    { "n", "<Leader>gl", ":Outline<CR>" }
+}

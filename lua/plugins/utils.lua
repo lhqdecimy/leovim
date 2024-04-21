@@ -66,13 +66,7 @@ share.mapkey {
 }
 
 -- Auto Pairs
-require "autoclose".setup()
+require "autoclose".setup {}
 
--- Sessions
-require "sessions".setup {
-    session_filepath = vim.fn.stdpath("data") .. "/sessions",
-    absolute = true,
-}
-share.mapkey {
-    { "n", "<Leader>fs", ":SessionsLoad"}
-}
+-- Last place
+require "nvim-lastplace".setup {}

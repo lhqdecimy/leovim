@@ -2,17 +2,17 @@ Leovim is a Neovim IDE.
 
 # Installation
 Make sure that your old configuration was saved:
-```
+```bash
 mv ~/.config/nvim ~/nvim
 ```
 ...... And install Leovim:
-```
+```bash
 git clone https://github.com/lhqdecimy/leovim ~/.config/nvim
 ```
 
 # Usage
 ## Keymaps
-The leader key is space.
+The default leader key is space.
 
 | Mode | Keys                                         | Action               |
 |------|----------------------------------------------|----------------------|
@@ -38,6 +38,34 @@ The leader key is space.
 | N    | gd                                           | Goto definition      |
 | N    | gi                                           | Goto implementation  |
 | N    | gr                                           | References           |
+| N    | gl                                           | Outline              |
 | N    | SPC R                                        | Rename               |
 | N    | SPC c a                                      | Code action          |
 | V    | H / L                                        | Shift                |
+
+There is a function named `mapkey` in `lua/share.lua`. You can use it to set keymaps easily.
+
+```lua
+require "share".mapkey {
+    { <mode>, <key>, <map>, [<opts>] }, -- vim.keymap.set(<mode>, <key>, <map>, [<opts>])
+    ...
+}
+```
+
+## LSP Servers
+There are 2 ways to install LSP servers:
+1. Using `:LspInstall` command.
+2. Editing `lua/mylsp.lua` (recommend).
+
+```lua
+-- lua/mylsp.lua
+return {
+    "clangd",
+    "pyright",
+    "lua_ls",
+    "rust_analyzer",
+    "tsserver",
+    "html",
+    "gopls",
+}
+```
