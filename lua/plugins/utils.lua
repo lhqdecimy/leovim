@@ -69,4 +69,8 @@ share.mapkey {
 require "autoclose".setup {}
 
 -- Last place
-require "nvim-lastplace".setup {}
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        require "nvim-lastplace".setup {}
+    end,
+})

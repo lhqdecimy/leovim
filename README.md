@@ -69,3 +69,18 @@ return {
     "gopls",
 }
 ```
+
+## Shift Configuration
+You can change the `vim.opt.shiftwidth` for each file type in `myshift.lua`.
+```
+return {
+    { "*",   4 },
+    { "c",   2 },
+    { "cpp", 2 },
+    { "h",   2 },
+    { "hpp", 2 },
+}
+```
+
+## Local Configuration
+Put `.leovim.lua` into a directory so that it can be loaded if the current directory is this directory.

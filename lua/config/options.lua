@@ -1,7 +1,7 @@
 ----------------------------------------
 ------------ Basic Options -------------
 ----------------------------------------
-local share = require"share"
+local share = require "share"
 local opt = vim.opt
 
 ------ Apearance ------
@@ -23,18 +23,11 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 -- Shift
 opt.tabstop = 4
 opt.shiftwidth = 4
-opt.softtabstop=4
+opt.softtabstop = 4
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
-share.shift {
-    { "*", 4 },
-    { "c", 2 },
-    { "cpp", 2 },
-    { "h", 2 },
-    { "hpp", 2 },
-}
-
+share.shift = require "myshift"
 ------ Searching ------
 opt.incsearch = true
 opt.hlsearch = false
@@ -46,8 +39,10 @@ opt.smartcase = true
 opt.clipboard = "unnamedplus"
 -- Mouse
 opt.mouse = "a"
-vim.cmd"aunmenu PopUp.-1-"
-vim.cmd"aunmenu PopUp.How-to\\ disable\\ mouse"
+vim.cmd "aunmenu PopUp.-1-"
+vim.cmd "aunmenu PopUp.How-to\\ disable\\ mouse"
 -- Windows
 opt.splitright = true
 opt.splitbelow = true
+-- Local config
+share.local_config()

@@ -35,4 +35,24 @@ function M.shift(sh)
     end
 end
 
+------ Local config ------
+function M.local_config()
+    local dir = vim.api.nvim_command_output "pwd"
+    local name = dir .. "/.leovim.lua"
+
+    local exists = function (name)
+        local f = io.open(name, "r")
+        if f then
+            io.close(f)
+            return true
+        else
+            return false
+        end
+    end
+
+    if exists(name) then
+        dofile(name)
+    end
+end
+
 return M

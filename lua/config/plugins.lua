@@ -18,7 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install Plugins
 require "lazy".setup {
-    ------ Appearance ------
     -- Dashboard
     "goolord/alpha-nvim",
     -- Colorscheme

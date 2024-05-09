@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 
 ------ Keymaps ------
 require "share".mapkey {
-    -- Quit Insert Mode
+    -- Insert Mode
     { "i", "jk",         "<Esc>" },
 
     ------ Windows ------
@@ -27,10 +27,10 @@ require "share".mapkey {
 
     ------ Others ------
     -- Shift
-    { "v", "H",          "<gv" },
-    { "v", "L",          ">gv" },
+    { "v", "<",          "<gv" },
+    { "v", ">",          ">gv" },
     -- Quit Windo(w
     { "n", "<Leader>q",  ":q<CR>" },
     -- Write
-    { "n", "<Leader>w", ":wall<CR>"}
+    { "n", "<Leader>w",  ":wall<CR>" },
 }
