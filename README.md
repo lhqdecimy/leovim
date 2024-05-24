@@ -83,4 +83,4 @@ return {
 ```
 
 ## Local Configuration
-Put `.leovim.lua` into a directory so that it can be loaded if the current directory is this directory.
+Put `.nvim.lua` into a directory so that it can be loaded if the current directory is this directory.

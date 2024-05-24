@@ -2,4 +2,4 @@
 ------------ Init ------------
 ------------------------------
 
-require "config"
+require "leovim.config"

@@ -4,8 +4,8 @@
 
 ------ Load Settings ------
 -- Style
-require "plugins.style"
+require "leovim.plugins.style"
 -- Utils
-require "plugins.utils"
+require "leovim.plugins.utils"
 -- Lsp
-require "plugins.lsp"
+require "leovim.plugins.lsp"

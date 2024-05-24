@@ -27,7 +27,7 @@ opt.softtabstop = 4
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
-share.shift = require "myshift"
+share.shift (require "myshift")
 ------ Searching ------
 opt.incsearch = true
 opt.hlsearch = false
@@ -45,4 +45,4 @@ vim.cmd "aunmenu PopUp.How-to\\ disable\\ mouse"
 opt.splitright = true
 opt.splitbelow = true
 -- Local config
-share.local_config()
+opt.exrc = true

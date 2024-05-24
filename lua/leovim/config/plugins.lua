@@ -3,7 +3,7 @@
 -----------------------------------------
 
 ------ Setup Lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -59,8 +59,6 @@ require "lazy".setup {
     { "akinsho/bufferline.nvim",       dependencies = "nvim-tree/nvim-web-devicons" },
     -- searching
     { "nvim-telescope/telescope.nvim", dependencies = "nvim-lua/plenary.nvim" },
-    -- mru
-    { "ilayali/scmru.nvim",            dependencies = "kkharji/sqlite.lua" },
 
     ------ Lsp ------
     -- Installation
@@ -79,4 +77,4 @@ require "lazy".setup {
 }
 
 -- Setup Plugins
-require "plugins"
+require "leovim.plugins"

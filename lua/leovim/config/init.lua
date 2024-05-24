@@ -1,6 +1,6 @@
 -----------------------------------------------------------------
 ------------ Import The Most Important Configuration ------------
 -----------------------------------------------------------------
-require "config.options"
-require "config.keymaps"
-require "config.plugins"
+require "leovim.config.options"
+require "leovim.config.keymaps"
+require "leovim.config.plugins"
