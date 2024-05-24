@@ -29,7 +29,7 @@ dashboard.section.buttons.val = {
     dashboard.button("e", "New File", "<Cmd>ene<Cr>"),
     dashboard.button("SPC f f", "Find File"),
     dashboard.button("SPC f w", "Find Word"),
-    dashboard.button("q", "Quit"),
+    dashboard.button("q", "Quit", "<Cmd>q<Cr>"),
 }
 require "alpha".setup(dashboard.config)
 -- Scroll
