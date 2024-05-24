@@ -28,6 +28,8 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 share.shift (require "myshift")
+-- Undo
+opt.undofile = true
 ------ Searching ------
 opt.incsearch = true
 opt.hlsearch = false
