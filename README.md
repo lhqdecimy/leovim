@@ -28,7 +28,6 @@ The default leader key is space.
 | N    | SPC T                                        | Open float terminal  |
 | N    | SPC f f                                      | Find file            |
 | N    | SPC f g                                      | Find word            |
-| N    | SPC f r                                      | Find MRU             |  
 | N    | SPC j / SPC k                                | Quick jump           |
 | N    | SPC h / SPC l                                | Change buffer        |
 | N    | SPC d                                        | Close buffer         |
@@ -41,7 +40,7 @@ The default leader key is space.
 | N    | gl                                           | Outline              |
 | N    | SPC R                                        | Rename               |
 | N    | SPC c a                                      | Code action          |
-| V    | H / L                                        | Shift                |
+| V    | > / <                                        | Shift                |
 
 There is a function named `mapkey` in `lua/share.lua`. You can use it to set keymaps easily.
 
