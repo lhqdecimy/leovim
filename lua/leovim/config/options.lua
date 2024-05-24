@@ -46,3 +46,8 @@ opt.splitright = true
 opt.splitbelow = true
 -- Local config
 opt.exrc = true
+
+-- Auto Save
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+    command = "wall",
+})
