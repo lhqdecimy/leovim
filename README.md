@@ -53,8 +53,8 @@ require "share".mapkey {
 
 ## LSP Servers
 There are 2 ways to install LSP servers:
-1. Using `:LspInstall` command.
-2. Editing `lua/mylsp.lua` (recommend).
+1. Use `:LspInstall` command.
+2. Edit `lua/mylsp.lua` (recommend).
 
 ```lua
 -- lua/mylsp.lua
