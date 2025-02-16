@@ -7,7 +7,22 @@ local M = {}
 ------ Keymaps ------
 function M.mapkey(keymaps)
     for _, value in pairs(keymaps) do
-        vim.keymap.set(value[1], value[2], value[3], value[4])
+        local opts = value[4]
+        if opts == nil then
+            opts = {
+                noremap = true,
+                silent = true,
+                desc = "请输入文本",
+            }
+        else
+            if opts.noremap == nil then
+                opts.noremap = true
+            end
+            if opts.silent == nil then
+                opts.silent = true
+            end
+        end
+        vim.keymap.set(value[1], value[2], value[3], opts)
     end
 end
 

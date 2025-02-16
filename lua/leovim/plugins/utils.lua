@@ -22,7 +22,7 @@ require "nvim-tree".setup {
     },
 }
 share.mapkey {
-    { "n", "<Leader>t", "<Cmd>NvimTreeToggle<Cr>", { desc = "Tree" } },
+    { "n", "<Leader>t", "<Cmd>NvimTreeToggle<Cr>", { desc = "Toggle File Tree" } },
 }
 
 -- Buffers
@@ -43,6 +43,10 @@ share.mapkey {
 
 -- Which Key
 require "which-key".setup {}
+require "which-key".add {
+    { "<Leader>s", group = "Split Window"},
+    { "<Leader>f", group = "File"},
+}
 
 -- Motion
 require "hop".setup {}
@@ -68,3 +72,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
         require "nvim-lastplace".setup {}
     end,
 })
+
+share.mapkey {
+    { "n", "<Leader>*", "" }
+}
+
+-- Undo Tree
+local undotree = require "undotree"
+undotree.setup {}
+share.mapkey {
+    { "n", "<Leader>u", undotree.toggle, { desc = "Toggle Undo Tree" } }
+}

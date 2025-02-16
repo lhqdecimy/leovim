@@ -1,5 +1,8 @@
 Leovim is a Neovim IDE.
 
+# Dependencies
+1. ripgrep
+
 # Installation
 Make sure that your old configuration was saved:
 ```bash
@@ -22,7 +25,7 @@ The default leader key is space.
 | N    | Ctrl h / Ctrl j / Ctrl k / Ctrl l            | Move to other window |
 | N    | SPC sh / SPC sv                              | Split window         |
 | N    | Ctrl Up / Ctrl Down / Ctrl Left / Ctrl right | Resize window        |
-| N    | SPC q                                        | Quit                 |
+| N    | SPC q                                        | Close Buffer         |
 | N    | SPC w                                        | Save all             |
 | N    | SPC t                                        | Toggle tree          |
 | N    | SPC T                                        | Open float terminal  |
@@ -39,8 +42,10 @@ The default leader key is space.
 | N    | gr                                           | References           |
 | N    | gl                                           | Outline              |
 | N    | SPC R                                        | Rename               |
-| N    | SPC c a                                      | Code action          |
+| N    | SPC c                                        | Code action          |
+| N    | SPC u                                        | Undo tree            |
 | V    | > / <                                        | Shift                |
+| V    | S                                            | Surround             |
 
 There is a function named `mapkey` in `lua/share.lua`. You can use it to set keymaps easily.
 
@@ -59,13 +64,13 @@ There are 2 ways to install LSP servers:
 ```lua
 -- lua/mylsp.lua
 return {
-    "clangd",
-    "pyright",
     "lua_ls",
     "rust_analyzer",
-    "tsserver",
-    "html",
+    "clangd",
+    "ts_ls",
     "gopls",
+    "html",
+    "pyright",
 }
 ```
 
@@ -82,4 +87,4 @@ return {
 ```
 
 ## Local Configuration
-Put `.nvim.lua` into a directory so that it can be loaded if the current directory is this directory.
+Put `.nvim.lua` into the current directory to load it.

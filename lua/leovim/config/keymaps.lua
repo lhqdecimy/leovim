@@ -29,8 +29,6 @@ require "share".mapkey {
     -- Shift
     { "v", "<",          "<gv", { desc = "Shift Left" } },
     { "v", ">",          ">gv", { desc = "Shift Right" } },
-    -- Quit Windo(w
-    { "n", "<Leader>q",  "<Cmd>q<Cr>", { desc = "Quit" } },
     -- Write
     { "n", "<Leader>w",  "<Cmd>wall<Cr>", { desc = "Save" } },
 }

@@ -26,10 +26,6 @@ require "lazy".setup {
     "lukas-reineke/indent-blankline.nvim",
     -- Scroll
     "karb94/neoscroll.nvim",
-    -- Syntax
-    "nvim-treesitter/nvim-treesitter",
-    -- Rainbow
-    "HiPhish/nvim-ts-rainbow2",
     -- Messages
     {
         "folke/noice.nvim",
@@ -39,7 +35,9 @@ require "lazy".setup {
         },
     },
     -- Status Line
-    { "nvim-lualine/lualine.nvim",     dependencies = "nvim-tree/nvim-web-devicons" }, ------ Utils ------ Terminal
+    { "nvim-lualine/lualine.nvim",     dependencies = "nvim-tree/nvim-web-devicons" },
+    ------ Utils ------ 
+    -- Terminal
     "akinsho/toggleterm.nvim",
     -- Which Key
     "folke/which-key.nvim",
@@ -51,14 +49,18 @@ require "lazy".setup {
     "hedyhli/outline.nvim",
     -- Last place
     "ethanholz/nvim-lastplace",
-    -- trouble
+    -- Trouble
     { "folke/trouble.nvim",            dependencies = "nvim-tree/nvim-web-devicons" },
-    -- tree
+    -- Tree
     { "nvim-tree/nvim-tree.lua",       dependencies = "nvim-tree/nvim-web-devicons" },
-    -- buffers
+    -- Buffers
     { "akinsho/bufferline.nvim",       dependencies = "nvim-tree/nvim-web-devicons" },
-    -- searching
+    -- Searching
     { "nvim-telescope/telescope.nvim", dependencies = "nvim-lua/plenary.nvim" },
+    -- Round Pairs
+    "tpope/vim-surround",
+    -- Visual Star Search
+    "bronson/vim-visual-star-search",
 
     ------ Lsp ------
     -- Installation
@@ -74,6 +76,8 @@ require "lazy".setup {
     "hrsh7th/nvim-cmp",
     "dcampos/nvim-snippy",
     "dcampos/cmp-snippy",
+    -- Undo Tree
+    { "jiaoshijie/undotree", dependencies = "nvim-lua/plenary.nvim" },
 }
 
 -- Setup Plugins

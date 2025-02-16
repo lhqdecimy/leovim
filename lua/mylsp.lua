@@ -3,11 +3,11 @@
 ---------------------------------------------------
 
 return {
-    "clangd",
-    "pyright",
     "lua_ls",
     "rust_analyzer",
-    "tsserver",
-    "html",
+    "clangd",
+    "ts_ls",
     "gopls",
+    "html",
+    "pyright",
 }

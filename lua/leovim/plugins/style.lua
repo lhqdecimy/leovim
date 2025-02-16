@@ -3,10 +3,17 @@
 ------------------------------------
 
 -- Colorscheme
-require "tokyonight".setup {}
+require "tokyonight".setup {
+    style = "night",
+    transparent = true,
+}
 vim.cmd "colorscheme tokyonight"
 -- Messages
-require "noice".setup {}
+require "noice".setup {
+    cmdline = {
+        view = "cmdline"
+    }
+}
 -- Status Line
 require "lualine".setup {}
 -- Indent
@@ -14,13 +21,20 @@ require "ibl".setup {}
 -- Dashboard
 local dashboard = require "alpha.themes.dashboard"
 dashboard.section.header.val = {
-    "██          ██████████   ████████    ██      ██  ██████████  ██████████",
-    "██          ██          ██      ██   ██      ██      ██      ██  ██  ██",
-    "██          ██          ██      ██   ██      ██      ██      ██  ██  ██",
-    "██          ██████████  ██      ██   ██      ██      ██      ██  ██  ██",
-    "██          ██          ██      ██   ██      ██      ██      ██  ██  ██",
-    "██          ██          ██      ██    ██    ██       ██      ██  ██  ██",
-    "██████████  ██████████   ████████      ██████    ██████████  ██  ██  ██",
+    "",
+    "",
+    "",
+    "",
+    "                             WELCOME TO                                 ",
+    "██|         ██████████|  ████████|   ██|     ██| ██████████| ██████████|",
+    "██|         ██|         ██|     ██|  ██|     ██|     ██|     ██| ██| ██|",
+    "██|         ██|         ██|     ██|  ██|     ██|     ██|     ██| ██| ██|",
+    "██|         ██████████| ██|     ██|  ██|     ██|     ██|     ██| ██| ██|",
+    "██|         ██|         ██|     ██|  ██|     ██|     ██|     ██| ██| ██|",
+    "██|         ██|         ██|     ██|   ██    ██|      ██|     ██| ██| ██|",
+    "██████████| ██████████|  ████████|     ██████|   ██████████| ██| ██| ██|",
+    "                            BY LHQDECIMY                                ",
+    "",
     "",
     "",
 }
@@ -34,15 +48,3 @@ dashboard.section.buttons.val = {
 require "alpha".setup(dashboard.config)
 -- Scroll
 require "neoscroll".setup {}
--- Syntax
-require "nvim-treesitter.configs".setup {
-    -- Rainbow
-    rainbow = {
-        enable = true,
-        -- Which query to use for finding delimiters
-        query = "rainbow-parens",
-        -- Highlight the entire buffer all at once
-        strategy = require "ts-rainbow".strategy.global,
-    },
-    ensure_installed = "all",
-}

@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             { "n",          "K",          buf.hover,          { buffer = ev.buf, desc = "Document" } },
             { "n",          "gi",         buf.implementation, { buffer = ev.buf, desc = "Implementation" } },
             { "n",          "<Leader>R",  buf.rename,         { buffer = ev.buf, desc = "Rename" } },
-            { { "n", "v" }, "<Leader>ca", buf.code_action,    { buffer = ev.buf, desc = "Code Action" } },
+            { { "n", "v" }, "<Leader>c", buf.code_action,    { buffer = ev.buf, desc = "Code Action" } },
             { "n",          "gr",         buf.references,     { buffer = ev.buf, desc = "References" } },
             {
                 "n",
