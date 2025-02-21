@@ -16,8 +16,8 @@ require "trouble".setup {}
 share.mapkey {
     { "n", "<Leader>te", "<Cmd>Trouble diagnostics toggle win.position=below<Cr>", { desc = "Diagnostics" } },
     { "n", "<Leader>ts", "<Cmd>Trouble symbols toggle win.position=right<Cr>",     { desc = "Symbols" } },
-    { "n", "<Leader>td", "<Cmd>Trouble lsp toggle win.position=right",             { desc = "Definitions / References / ..." } },
-    { "n", "<Leader>tq", "<Cmd>Trouble qflist toggle win.position=below",          { desc = "Quickfix" } },
+    { "n", "<Leader>td", "<Cmd>Trouble lsp toggle win.position=right<Cr>",             { desc = "Definitions / References / ..." } },
+    { "n", "<Leader>tq", "<Cmd>Trouble qflist toggle win.position=below<Cr>",          { desc = "Quickfix" } },
 }
 which.add {
     { "<Leader>t", group = "Tree" },
