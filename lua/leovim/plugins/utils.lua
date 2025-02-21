@@ -4,10 +4,23 @@
 
 local share = require "leovim.share"
 
+-- Which Key
+local which = require "which-key"
+which.setup {}
+which.add {
+    { "<Leader>s", group = "Split Window" },
+}
+
 -- Trouble
 require "trouble".setup {}
 share.mapkey {
-    { "n", "<Leader>e", "<Cmd>TroubleToggle<Cr>", { desc = "Trouble" } },
+    { "n", "<Leader>te", "<Cmd>Trouble diagnostics toggle win.position=below<Cr>", { desc = "Diagnostics" } },
+    { "n", "<Leader>ts", "<Cmd>Trouble symbols toggle win.position=right<Cr>",     { desc = "Symbols" } },
+    { "n", "<Leader>td", "<Cmd>Trouble lsp toggle win.position=right",             { desc = "Definitions / References / ..." } },
+    { "n", "<Leader>tq", "<Cmd>Trouble qflist toggle win.position=below",          { desc = "Quickfix" } },
+}
+which.add {
+    { "<Leader>t", group = "Tree" },
 }
 
 -- Tree
@@ -22,7 +35,8 @@ require "nvim-tree".setup {
     },
 }
 share.mapkey {
-    { "n", "<Leader>t", "<Cmd>NvimTreeToggle<Cr>", { desc = "Toggle File Tree" } },
+    { "n", "<Leader>tt", "<Cmd>NvimTreeToggle<Cr>", { desc = "File Tree" } },
+    { "n", "<Leader>n", "<Cmd>NvimTreeToggle<Cr>", { desc = "File Tree" } },
 }
 
 -- Buffers
@@ -41,13 +55,6 @@ share.mapkey {
     { "n", "<Leader>T", "<Cmd>ToggleTerm<Cr>", { desc = "Float Terminal" } },
 }
 
--- Which Key
-require "which-key".setup {}
-require "which-key".add {
-    { "<Leader>s", group = "Split Window"},
-    { "<Leader>f", group = "File"},
-}
-
 -- Motion
 require "hop".setup {}
 share.mapkey {
@@ -61,6 +68,9 @@ share.mapkey {
     { "n", "<Leader>ff", builtin.find_files, { desc = "Find File" } },
     { "n", "<Leader>fw", builtin.live_grep,  { desc = "Find Word" } },
     { "n", "<Leader>fb", builtin.buffers,    { desc = "Find Buffer" } },
+}
+which.add {
+    { "<Leader>f", group = "File" },
 }
 
 -- Auto Pairs

@@ -1,4 +1,3 @@
-
 ------------------------------------------------------------
 ------------ Put your shift filetype here.      ------------
 ------------------------------------------------------------
@@ -33,6 +32,8 @@ return {
                 autoindent = true,
                 smartindent = true,
                 cindent = true,
+
+                makeprg = "make",
             }
         end,
     },
@@ -48,6 +49,8 @@ return {
                 autoindent = true,
                 smartindent = true,
                 cindent = true,
+
+                makeprg = "make",
             }
         end,
     },

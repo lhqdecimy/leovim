@@ -12,7 +12,7 @@ function M.mapkey(keymaps)
             opts = {
                 noremap = true,
                 silent = true,
-                desc = "请输入文本",
+                desc = "Description",
             }
         else
             if opts.noremap == nil then

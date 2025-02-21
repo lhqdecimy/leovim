@@ -14,10 +14,13 @@ require "noice".setup {
         view = "cmdline"
     }
 }
+
 -- Status Line
 require "lualine".setup {}
+
 -- Indent
 require "ibl".setup {}
+
 -- Dashboard
 local dashboard = require "alpha.themes.dashboard"
 dashboard.section.header.val = {
@@ -38,7 +41,14 @@ dashboard.section.header.val = {
     "",
     "",
 }
-dashboard.section.footer.val = "Hello World"
+
+local math = require "math"
+local os = require "os"
+math.randomseed(tostring(os.time()):reverse():sub(1, 7))
+local sentences = require "leovim.default.sentences"
+local sentence = sentences[math.random(#sentences)]
+dashboard.section.footer.val = sentence
+
 dashboard.section.buttons.val = {
     dashboard.button("e", "New File", "<Cmd>ene<Cr>"),
     dashboard.button("SPC f f", "Find File"),
