@@ -47,44 +47,73 @@ The default leader key is space.
 | V    | > / <                                        | Shift                |
 | V    | S                                            | Surround             |
 
-There is a function named `mapkey` in `lua/share.lua`. You can use it to set keymaps easily.
+There is a function named `mapkey` in `lua/leovim/share.lua`. You can use it to set keymaps easily.
 
 ```lua
-require "share".mapkey {
+require "leovim.share".mapkey {
     { <mode>, <key>, <map>, [<opts>] }, -- vim.keymap.set(<mode>, <key>, <map>, [<opts>])
+                                        -- the default value of <opts> is { noremap = true, silent = true, desc = "请输入文本" }
     ...
 }
 ```
 
 ## LSP Servers
-There are 2 ways to install LSP servers:
-1. Use `:LspInstall` command.
-2. Edit `lua/mylsp.lua` (recommend).
+Use `:LspInstall` command to install LSP servers.
 
-```lua
--- lua/mylsp.lua
-return {
-    "lua_ls",
-    "rust_analyzer",
-    "clangd",
-    "ts_ls",
-    "gopls",
-    "html",
-    "pyright",
-}
+## Filetype Configuration
+Change your filetype configuration by `share.filetype`
 ```
+-- Default.
+local share = require "leovim.share"
 
-## Shift Configuration
-You can change the `vim.opt.shiftwidth` for each file type in `myshift.lua`.
-```
 return {
-    { "*",   4 },
-    { "c",   2 },
-    { "cpp", 2 },
-    { "h",   2 },
-    { "hpp", 2 },
+    {
+        "*",
+        function()
+            share.setlocal {
+                tabstop = 4,
+                softtabstop = 4,
+                expandtab = true,
+
+                shiftwidth = 4,
+                autoindent = true,
+                smartindent = true,
+                cindent = true,
+            }
+        end,
+    },
+    {
+        "c",
+        function()
+            share.setlocal {
+                tabstop = 2,
+                softtabstop = 2,
+                expandtab = true,
+
+                shiftwidth = 2,
+                autoindent = true,
+                smartindent = true,
+                cindent = true,
+            }
+        end,
+    },
+    {
+        "cpp",
+        function()
+            share.setlocal {
+                tabstop = 2,
+                softtabstop = 2,
+                expandtab = true,
+
+                shiftwidth = 2,
+                autoindent = true,
+                smartindent = true,
+                cindent = true,
+            }
+        end,
+    },
 }
 ```
 
 ## Local Configuration
-Put `.nvim.lua` into the current directory to load it.
+Put `.nvim.lua` into the current directory to load it. The user-configuration is `~/.leovim.lua`

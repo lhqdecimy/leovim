@@ -26,19 +26,25 @@ function M.mapkey(keymaps)
     end
 end
 
------- Shift ------
-function M.shift(sh)
-    for _, value in pairs(sh) do
-        vim.api.nvim_create_autocmd("BufEnter", {
-            pattern = { "*." .. value[1] },
-            callback = function()
-                local opt = vim.opt
-                local width = value[2]
-                -- Set shift width
-                opt.tabstop = width
-                opt.shiftwidth = width
-                opt.softtabstop = width
-            end,
+------ Options ------
+function M.options(options)
+    for key, value in pairs(options) do
+        vim.opt[key] = value
+    end
+end
+
+------ Local Options ------
+function M.setlocal(options)
+    for key, value in pairs(options) do
+        vim.opt_local[key] = value
+    end
+end
+------ FileType ------
+function M.filetype(filetype)
+    for _, config in pairs(filetype) do
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = config[1],
+            callback = config[2],
         })
     end
 end

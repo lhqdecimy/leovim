@@ -2,7 +2,7 @@
 ------------ Lsp ------------
 -----------------------------
 
-local share = require "share"
+local share = require "leovim.share"
 
 ------ Completing ------
 local cmp = require "cmp"
@@ -48,8 +48,6 @@ cmp.setup.cmdline(":", {
 ------ Installation ------
 require "mason".setup {}
 require "mason-lspconfig".setup {
-    -- Installed
-    ensure_installed = require "mylsp",
     -- Auto Installation
     automatic_installation = true,
 }

@@ -1,57 +1,50 @@
 ----------------------------------------
 ------------ Basic Options -------------
 ----------------------------------------
-local share = require "share"
-local opt = vim.opt
+local share = require "leovim.share"
 
------- Apearance ------
--- True Colors
-opt.termguicolors = true
--- Line Number
-opt.number = true
-opt.relativenumber = true
--- Lines
-opt.cursorline = true
--- Others
-opt.showmode = true
-opt.showcmd = true
-opt.showmatch = true
+share.options {
+    ------ Apearance ------
+    -- True Colors
+    termguicolors = true,
+    -- Line Number
+    number = true,
+    relativenumber = true,
+    -- Lines
+    cursorline = true,
+    -- Others
+    showmode = true,
+    showcmd = true,
+    showmatch = true,
 
------- Editor ------
--- Completing
-opt.completeopt = { "menu", "menuone", "noselect" }
--- Shift
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.expandtab = true
-opt.autoindent = true
-opt.smartindent = true
-share.shift (require "myshift")
--- Undo
-opt.undofile = true
------- Searching ------
-opt.incsearch = true
-opt.hlsearch = false
-opt.ignorecase = true
-opt.smartcase = true
+    ------ Editor ------
+    -- Completing
+    completeopt = { "menu", "menuone", "noselect" },
+    -- Undo
+    undofile = true,
+    ------ Searching ------
+    incsearch = true,
+    hlsearch = false,
+    ignorecase = true,
+    smartcase = true,
 
------- Others ------
--- Clipboard
-opt.clipboard = "unnamedplus"
+    ------ Others ------
+    -- Clipboard
+    clipboard = "unnamedplus",
+    -- Mouse
+    mouse = "a",
+    -- Windows
+    splitright = true,
+    splitbelow = true,
+    -- Local config
+    exrc = true,
+    -- Spell check
+    spell = true,
+}
+
 -- Mouse
-opt.mouse = "a"
 vim.cmd "aunmenu PopUp.-1-"
 vim.cmd "aunmenu PopUp.How-to\\ disable\\ mouse"
--- Windows
-opt.splitright = true
-opt.splitbelow = true
--- Local config
-opt.exrc = true
--- Spell check
-opt.spell = true
 
--- Auto Save
-vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-    command = "wall",
-})
+-- Filetype
+share.filetype(require "leovim.default.filetype")

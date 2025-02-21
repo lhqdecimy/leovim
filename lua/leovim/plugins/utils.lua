@@ -2,7 +2,7 @@
 ------------ Utils ------------
 -------------------------------
 
-local share = require "share"
+local share = require "leovim.share"
 
 -- Trouble
 require "trouble".setup {}
@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 share.mapkey {
-    { "n", "<Leader>*", "" }
+    { "n", "<Leader>*", "" },
 }
 
 -- Undo Tree

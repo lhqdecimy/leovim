@@ -6,7 +6,7 @@
 vim.g.mapleader = " "
 
 ------ Keymaps ------
-require "share".mapkey {
+require "leovim.share".mapkey {
     -- Insert Mode
     { "i", "jk",         "<Esc>",                      { desc = "Quit" } },
 
