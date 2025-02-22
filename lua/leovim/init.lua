@@ -7,20 +7,17 @@ local M = {}
 ------ Keymaps ------
 function M.mapkey(keymaps)
     for _, value in pairs(keymaps) do
-        local opts = value[4]
-        if opts == nil then
-            opts = {
-                noremap = true,
-                silent = true,
-                desc = "Description",
-            }
-        else
-            if opts.noremap == nil then
-                opts.noremap = true
+        local opts = {}
+        for k, v in pairs(value) do
+            if type(k) == "string" then
+                opts[k] = v
             end
-            if opts.silent == nil then
-                opts.silent = true
-            end
+        end
+        if opts.noremap == nil then
+            opts.noremap = true
+        end
+        if opts.silent == nil then
+            opts.silent = true
         end
         vim.keymap.set(value[1], value[2], value[3], opts)
     end
@@ -39,6 +36,7 @@ function M.setlocal(options)
         vim.opt_local[key] = value
     end
 end
+
 ------ FileType ------
 function M.filetype(filetype)
     for _, config in pairs(filetype) do

@@ -18,67 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install Plugins
 require "lazy".setup {
-    -- Dashboard
-    "goolord/alpha-nvim",
-    -- Colorscheme
-    "folke/tokyonight.nvim",
-    -- Indent
-    "lukas-reineke/indent-blankline.nvim",
-    -- Scroll
-    "karb94/neoscroll.nvim",
-    -- Messages
-    {
-        "folke/noice.nvim",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
+    spec = {
+        import = "leovim.plugins",
     },
-    -- Status Line
-    { "nvim-lualine/lualine.nvim",     dependencies = "nvim-tree/nvim-web-devicons" },
-    ------ Utils ------ 
-    -- Terminal
-    "akinsho/toggleterm.nvim",
-    -- Which Key
-    "folke/which-key.nvim",
-    -- Motion
-    "hadronized/hop.nvim",
-    -- Auto Pairs
-    "m4xshen/autoclose.nvim",
-    -- Outline
-    "hedyhli/outline.nvim",
-    -- Last place
-    "ethanholz/nvim-lastplace",
-    -- Trouble
-    { "folke/trouble.nvim",            dependencies = "nvim-tree/nvim-web-devicons" },
-    -- Tree
-    { "nvim-tree/nvim-tree.lua",       dependencies = "nvim-tree/nvim-web-devicons" },
-    -- Buffers
-    { "akinsho/bufferline.nvim",       dependencies = "nvim-tree/nvim-web-devicons" },
-    -- Searching
-    { "nvim-telescope/telescope.nvim", dependencies = "nvim-lua/plenary.nvim" },
-    -- Round Pairs
-    "tpope/vim-surround",
-    -- Visual Star Search
-    "bronson/vim-visual-star-search",
-
-    ------ Lsp ------
-    -- Installation
-    "williamboman/mason.nvim",
-    "williamboman/mason.lspconfig.nvim",
-    -- Config
-    "neovim/nvim-lspconfig",
-    -- Completing
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/nvim-cmp",
-    "dcampos/nvim-snippy",
-    "dcampos/cmp-snippy",
-    -- Undo Tree
-    { "jiaoshijie/undotree", dependencies = "nvim-lua/plenary.nvim" },
 }
 
--- Setup Plugins
-require "leovim.plugins"
+require "leovim.lsp"

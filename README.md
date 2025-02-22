@@ -27,13 +27,14 @@ The default leader key is space.
 | N    | Ctrl h / Ctrl j / Ctrl k / Ctrl l            | Move to other window           |
 | N    | SPC sh / SPC sv                              | Split window                   |
 | N    | Ctrl Up / Ctrl Down / Ctrl Left / Ctrl right | Resize window                  |
-| N    | SPC q                                        | Close Buffer                   |
+| N    | SPC q                                        | Quit                           |
 | N    | SPC w                                        | Save all                       |
 | N    | SPC t t / SPC n                              | Toggle file tree               |
 | N    | SPC t e                                      | Diagnostics                    |
 | N    | SPC t s                                      | Symbols                        |
 | N    | SPC t d                                      | Definitions / References / ... |
 | N    | SPC t q                                      | Quickfix                       |
+| N    | SPC t l                                      | Location list                  |
 | N    | SPC T                                        | Open float terminal            |
 | N    | SPC f f                                      | Find file                      |
 | N    | SPC f g                                      | Find word                      |
@@ -59,6 +60,9 @@ There is a function named `mapkey` in `leovim`. You can use it to set keymaps ea
 require "leovim".mapkey {
     { <mode>, <key>, <map>, [<opts>] }, -- vim.keymap.set(<mode>, <key>, <map>, [<opts>])
                                         -- the default value of <opts> is { noremap = true, silent = true, desc = "Description" }
+    -- Examples
+    { "n", "<Leader>q", "<Cmd>q<Cr>", noremap = true, silent = false },
+    { "n", "<Leader>n", "<Cmd>NvimTreeToggle<Cr>", desc = "Toggle Tree" },
     ...
 }
 ```
