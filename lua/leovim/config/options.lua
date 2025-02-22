@@ -3,7 +3,13 @@
 ----------------------------------------
 local leovim = require "leovim"
 
+vim.cmd [[
+filetype indent plugin on
+syntax on
+]]
+
 leovim.options {
+    compatible = false,
     ------ Apearance ------
     -- True Colors
     termguicolors = true,
