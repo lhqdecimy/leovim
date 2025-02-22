@@ -72,7 +72,7 @@ Use `:LspInstall` command to install LSP servers.
 
 ## Filetype Configuration
 Change your filetype configuration by `leovim.filetype`
-```
+```lua
 -- Default.
 local leovim = require "leovim"
 
