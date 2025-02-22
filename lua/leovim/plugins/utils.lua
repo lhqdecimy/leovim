@@ -2,7 +2,7 @@
 ------------ Utils ------------
 -------------------------------
 
-local share = require "leovim.share"
+local leovim = require "leovim"
 
 -- Which Key
 local which = require "which-key"
@@ -13,7 +13,7 @@ which.add {
 
 -- Trouble
 require "trouble".setup {}
-share.mapkey {
+leovim.mapkey {
     { "n", "<Leader>te", "<Cmd>Trouble diagnostics toggle win.position=below<Cr>", { desc = "Diagnostics" } },
     { "n", "<Leader>ts", "<Cmd>Trouble symbols toggle win.position=right<Cr>",     { desc = "Symbols" } },
     { "n", "<Leader>td", "<Cmd>Trouble lsp toggle win.position=right<Cr>",             { desc = "Definitions / References / ..." } },
@@ -34,14 +34,14 @@ require "nvim-tree".setup {
         dotfiles = false,
     },
 }
-share.mapkey {
+leovim.mapkey {
     { "n", "<Leader>tt", "<Cmd>NvimTreeToggle<Cr>", { desc = "File Tree" } },
     { "n", "<Leader>n", "<Cmd>NvimTreeToggle<Cr>", { desc = "File Tree" } },
 }
 
 -- Buffers
 require "bufferline".setup {}
-share.mapkey {
+leovim.mapkey {
     { "n", "<Leader>h", "<Cmd>bprevious<Cr>", { desc = "Previous Buffer" } },
     { "n", "<Leader>l", "<Cmd>bnext<Cr>",     { desc = "Next Buffer" } },
     { "n", "<Leader>d", "<Cmd>bdelete<Cr>",   { desc = "Close Buffer" } },
@@ -51,20 +51,20 @@ share.mapkey {
 require "toggleterm".setup {
     direction = "float",
 }
-share.mapkey {
+leovim.mapkey {
     { "n", "<Leader>T", "<Cmd>ToggleTerm<Cr>", { desc = "Float Terminal" } },
 }
 
 -- Motion
 require "hop".setup {}
-share.mapkey {
+leovim.mapkey {
     { "n", "<Leader>j", "<Cmd>HopWord<Cr>",  { desc = "Goto Word" } },
     { "n", "<Leader>k", "<Cmd>HopChar1<Cr>", { desc = "Goto Char" } },
 }
 
 -- Searching
 local builtin = require "telescope.builtin"
-share.mapkey {
+leovim.mapkey {
     { "n", "<Leader>ff", builtin.find_files, { desc = "Find File" } },
     { "n", "<Leader>fw", builtin.live_grep,  { desc = "Find Word" } },
     { "n", "<Leader>fb", builtin.buffers,    { desc = "Find Buffer" } },
@@ -83,13 +83,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
-share.mapkey {
+leovim.mapkey {
     { "n", "<Leader>*", "" },
 }
 
 -- Undo Tree
 local undotree = require "undotree"
 undotree.setup {}
-share.mapkey {
+leovim.mapkey {
     { "n", "<Leader>u", undotree.toggle, { desc = "Toggle Undo Tree" } }
 }

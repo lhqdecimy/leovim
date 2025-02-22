@@ -43,8 +43,8 @@ end
 function M.filetype(filetype)
     for _, config in pairs(filetype) do
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = config[1],
-            callback = config[2],
+            pattern = config.pattern,
+            callback = config.callback,
         })
     end
 end

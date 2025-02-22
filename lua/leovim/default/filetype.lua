@@ -2,13 +2,13 @@
 ------------ Put your shift filetype here.      ------------
 ------------------------------------------------------------
 
-local share = require "leovim.share"
+local leovim = require "leovim"
 
 return {
     {
-        "*",
-        function()
-            share.setlocal {
+        pattern = "*",
+        callback = function()
+            leovim.setlocal {
                 tabstop = 4,
                 softtabstop = 4,
                 expandtab = true,
@@ -21,26 +21,9 @@ return {
         end,
     },
     {
-        "c",
-        function()
-            share.setlocal {
-                tabstop = 2,
-                softtabstop = 2,
-                expandtab = true,
-
-                shiftwidth = 2,
-                autoindent = true,
-                smartindent = true,
-                cindent = true,
-
-                makeprg = "make",
-            }
-        end,
-    },
-    {
-        "cpp",
-        function()
-            share.setlocal {
+        pattern = { "c", "cpp" },
+        callback = function()
+            leovim.setlocal {
                 tabstop = 2,
                 softtabstop = 2,
                 expandtab = true,

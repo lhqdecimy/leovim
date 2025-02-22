@@ -1,9 +1,9 @@
 ----------------------------------------
 ------------ Basic Options -------------
 ----------------------------------------
-local share = require "leovim.share"
+local leovim = require "leovim"
 
-share.options {
+leovim.options {
     ------ Apearance ------
     -- True Colors
     termguicolors = true,
@@ -47,4 +47,4 @@ vim.cmd "aunmenu PopUp.-1-"
 vim.cmd "aunmenu PopUp.How-to\\ disable\\ mouse"
 
 -- Filetype
-share.filetype(require "leovim.default.filetype")
+leovim.filetype(require "leovim.default.filetype")

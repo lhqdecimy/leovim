@@ -2,7 +2,7 @@
 ------------ Lsp ------------
 -----------------------------
 
-local share = require "leovim.share"
+local leovim = require "leovim"
 
 ------ Completing ------
 local cmp = require "cmp"
@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         local opts = { buffer = ev.buf }
         local buf = vim.lsp.buf
-        share.mapkey {
+        leovim.mapkey {
             { "n",          "gD",         buf.declaration,    { buffer = ev.buf, desc = "Declaration" } },
             { "n",          "gd",         buf.definition,     { buffer = ev.buf, desc = "Definition" } },
             { "n",          "K",          buf.hover,          { buffer = ev.buf, desc = "Document" } },
@@ -92,6 +92,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 ------ Outline ------
 require "outline".setup {}
-share.mapkey {
+leovim.mapkey {
     { "n", "gl", "<Cmd>Outline<Cr>", { desc = "Outline" } }
 }

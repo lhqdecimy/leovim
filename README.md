@@ -53,10 +53,10 @@ The default leader key is space.
 | V    | > / <                                        | Shift                          |
 | V    | S                                            | Surround                       |
 
-There is a function named `mapkey` in `lua/leovim/share.lua`. You can use it to set keymaps easily.
+There is a function named `mapkey` in `leovim`. You can use it to set keymaps easily.
 
 ```lua
-require "leovim.share".mapkey {
+require "leovim".mapkey {
     { <mode>, <key>, <map>, [<opts>] }, -- vim.keymap.set(<mode>, <key>, <map>, [<opts>])
                                         -- the default value of <opts> is { noremap = true, silent = true, desc = "Description" }
     ...
@@ -67,16 +67,16 @@ require "leovim.share".mapkey {
 Use `:LspInstall` command to install LSP servers.
 
 ## Filetype Configuration
-Change your filetype configuration by `share.filetype`
+Change your filetype configuration by `leovim.filetype`
 ```
 -- Default.
-local share = require "leovim.share"
+local leovim = require "leovim"
 
 return {
     {
-        "*",
-        function()
-            share.setlocal {
+        pattern = "*",
+        callback = function()
+            leovim.setlocal {
                 tabstop = 4,
                 softtabstop = 4,
                 expandtab = true,
@@ -89,26 +89,9 @@ return {
         end,
     },
     {
-        "c",
-        function()
-            share.setlocal {
-                tabstop = 2,
-                softtabstop = 2,
-                expandtab = true,
-
-                shiftwidth = 2,
-                autoindent = true,
-                smartindent = true,
-                cindent = true,
-
-                makeprg = "make",
-            }
-        end,
-    },
-    {
-        "cpp",
-        function()
-            share.setlocal {
+        pattern = { "c", "cpp" },
+        callback = function()
+            leovim.setlocal {
                 tabstop = 2,
                 softtabstop = 2,
                 expandtab = true,
