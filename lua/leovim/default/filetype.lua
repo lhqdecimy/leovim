@@ -86,4 +86,21 @@ return {
             }
         end,
     },
+    {
+        pattern = "make",
+        callback = function()
+            leovim.setlocal {
+                tabstop = 4,
+                softtabstop = 4,
+                expandtab = false,
+
+                shiftwidth = 4,
+                autoindent = true,
+                smartindent = true,
+                cindent = true,
+
+                makeprg = "make",
+            }
+        end,
+    },
 }

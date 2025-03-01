@@ -4,6 +4,7 @@ Leovim is a Neovim IDE.
 1. git
 2. ripgrep
 3. unzip
+3. ruff (optional)
 
 # Installation
 Make sure that your old configuration was saved:
