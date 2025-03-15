@@ -105,7 +105,7 @@ return {
             }
             leovim.mapkey {
                 { "n", "<Leader>tt", "<Cmd>NvimTreeToggle<Cr>", desc = "File Tree" },
-                { "n", "<Leader>n",  "<Cmd>NvimTreeToggle<Cr>", desc = "File Tree" },
+                { "n", "<C-n>",      "<Cmd>NvimTreeToggle<Cr>", desc = "File Tree" },
             }
         end,
     },
@@ -175,4 +175,48 @@ return {
             }
         end,
     },
+    -- Windows
+    {
+        "anuvyklack/windows.nvim",
+        dependencies = {
+            "anuvyklack/middleclass",
+            "anuvyklack/animation.nvim",
+        },
+        config = function()
+            vim.o.winwidth = 10
+            vim.o.winminwidth = 10
+            vim.o.equalalways = false
+            require('windows').setup()
+
+            leovim.mapkey {
+                { "n", "<C-w>z", "<Cmd>WindowsMaximize<Cr>", desc = "Maximize" },
+                { "n", "<C-w>=", "<Cmd>WindowsEqualize<Cr>", desc = "Equalize" },
+            }
+        end,
+    },
+    -- Dap
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            local dap = require "dap"
+
+            require "which-key".add {
+                { "<Leader>b", group = "Debug" },
+            }
+
+            leovim.mapkey {
+                { "n", "<Leader>bb", dap.toggle_breakpoint, desc = "Break Point" },
+                { "n", "<Leader>bc", dap.continue,          desc = "Continue" },
+                {
+                    "n",
+                    "<Leader>bw",
+                    function()
+                        local widgets = require "dap.ui.widgets"
+                        widgets.centered_float(widgets.frames)
+                    end,
+                    desc = "Look"
+                },
+            }
+        end,
+    }
 }

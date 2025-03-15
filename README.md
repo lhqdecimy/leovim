@@ -30,7 +30,7 @@ The default leader key is space.
 | N    | Ctrl Up / Ctrl Down / Ctrl Left / Ctrl right | Resize window                  |
 | N    | SPC q                                        | Quit                           |
 | N    | SPC w                                        | Save all                       |
-| N    | SPC t t / SPC n                              | Toggle file tree               |
+| N    | SPC t t / Ctrl n                             | Toggle file tree               |
 | N    | SPC t e                                      | Diagnostics                    |
 | N    | SPC t s                                      | Symbols                        |
 | N    | SPC t d                                      | Definitions / References / ... |
