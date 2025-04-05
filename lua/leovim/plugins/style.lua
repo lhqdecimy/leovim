@@ -6,7 +6,8 @@ return {
     -- Dashboard
     {
         "goolord/alpha-nvim",
-        config = function()
+        main = "alpha",
+        opts = function()
             local dashboard = require "alpha.themes.dashboard"
             dashboard.section.header.val = {
                 "",
@@ -39,34 +40,36 @@ return {
                 dashboard.button("SPC f w", "Find Word"),
                 dashboard.button("q", "Quit", "<Cmd>q<Cr>"),
             }
-            require "alpha".setup(dashboard.config)
+
+            return dashboard.config
         end,
     },
     -- Colorscheme
     {
         "folke/tokyonight.nvim",
-        config = function()
-            require "tokyonight".setup {
-                style = "night",
-                transparent = false,
-            }
+        main = "tokyonight",
+        opts = {
+            style = "night",
+            transparent = false,
+        },
+        config = function(this)
+            require(this.main).setup(this.opts)
             vim.cmd "colorscheme tokyonight"
         end,
     },
     -- Indent
     {
         "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            -- Indent
-            require "ibl".setup {}
-        end,
+        main = "ibl",
+        opts = {},
+        event = "VeryLazy",
     },
     -- Scroll
     {
         "karb94/neoscroll.nvim",
-        config = function()
-            require "neoscroll".setup {}
-        end,
+        main = "neoscroll",
+        opts = {},
+        event = "VeryLazy",
     },
     -- Messages
     {
@@ -75,20 +78,18 @@ return {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
         },
-        config = function()
-            require "noice".setup {
-                cmdline = {
-                    view = "cmdline"
-                }
-            }
-        end,
+        main = "noice",
+        opts = {
+            cmdline = {
+                view = "cmdline",
+            },
+        },
     },
     -- Status Line
     {
         "nvim-lualine/lualine.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
-        config = function()
-            require "lualine".setup {}
-        end,
+        main = "lualine",
+        opts = {},
     },
 }
