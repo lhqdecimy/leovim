@@ -38,6 +38,23 @@ return {
         end,
     },
     {
+        pattern = "rust",
+        callback = function()
+            leovim.setlocal {
+                tabstop = 4,
+                softtabstop = 4,
+                expandtab = true,
+
+                shiftwidth = 4,
+                autoindent = true,
+                smartindent = true,
+                cindent = true,
+
+                makeprg = "cargo"
+            }
+        end,
+    },
+    {
         pattern = "ruby",
         callback = function()
             leovim.setlocal {
