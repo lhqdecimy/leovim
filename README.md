@@ -4,7 +4,6 @@ Leovim is a Neovim IDE.
 1. git
 2. ripgrep
 3. unzip
-3. ruff (optional)
 
 # Installation
 Make sure that your old configuration was saved:
@@ -30,15 +29,16 @@ The default leader key is space.
 | N    | Ctrl Up / Ctrl Down / Ctrl Left / Ctrl right | Resize window                  |
 | N    | SPC q                                        | Quit                           |
 | N    | SPC w                                        | Save all                       |
-| N    | SPC t t / Ctrl n                             | Toggle file tree               |
+| N    | SPC t u                                      | Undo tree                      |
+| N    | SPC t t / Ctrl n                             | Goto file                      |
 | N    | SPC t e                                      | Diagnostics                    |
 | N    | SPC t s                                      | Symbols                        |
 | N    | SPC t d                                      | Definitions / References / ... |
 | N    | SPC t q                                      | Quickfix                       |
 | N    | SPC t l                                      | Location list                  |
-| N    | SPC T                                        | Open float terminal            |
+| N    | SPC T                                        | Open terminal                  |
 | N    | SPC f f                                      | Find file                      |
-| N    | SPC f g                                      | Find word                      |
+| N    | SPC f w                                      | Find word                      |
 | N    | SPC j / SPC k                                | Quick jump                     |
 | N    | SPC h / SPC l                                | Change buffer                  |
 | N    | SPC d                                        | Close buffer                   |
@@ -51,7 +51,6 @@ The default leader key is space.
 | N    | gl                                           | Outline                        |
 | N    | SPC R                                        | Rename                         |
 | N    | SPC c                                        | Code action                    |
-| N    | SPC u                                        | Undo tree                      |
 | V    | > / <                                        | Shift                          |
 | V    | S                                            | Surround                       |
 

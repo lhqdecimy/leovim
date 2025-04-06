@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 "F",
                 function()
                     buf.format { async = true }
-                    vim.cmd "LspRestart"
+                    -- vim.cmd "LspRestart"
                 end,
                 { buffer = ev.buf, desc = "Format" },
             },

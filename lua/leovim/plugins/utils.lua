@@ -8,18 +8,19 @@ return {
     -- Terminal
     {
         "akinsho/toggleterm.nvim",
-        config = function()
-            require "toggleterm".setup {
-                direction = "float",
-            }
-            leovim.mapkey {
-                { "n", "<Leader>T", "<Cmd>ToggleTerm<Cr>", desc = "Float Terminal" },
-            }
-        end,
+        main = "toggleterm",
+        event = "VeryLazy",
+        opts = {
+            direction = "horizontal",
+        },
+        keys = {
+            { "<Leader>T", "<Cmd>ToggleTerm<Cr>", desc = "Terminal" },
+        },
     },
     -- Which Key
     {
         "folke/which-key.nvim",
+        event = "VeryLazy",
         config = function()
             local which = require "which-key"
             which.setup {}
@@ -30,38 +31,28 @@ return {
     },
     -- Motion
     {
-        "hadronized/hop.nvim",
-        config = function()
-            require "hop".setup {}
-            leovim.mapkey {
-                { "n", "<Leader>j", "<Cmd>HopWord<Cr>",  desc = "Goto Word" },
-                { "n", "<Leader>k", "<Cmd>HopChar1<Cr>", desc = "Goto Char" },
-            }
-        end,
+        "smoka7/hop.nvim",
+        main = "hop",
+        event = "VeryLazy",
+        opts = {},
+        keys = {
+            { "<Leader>j", "<Cmd>HopWord<Cr>",  desc = "Goto Word" },
+            { "<Leader>k", "<Cmd>HopChar1<Cr>", desc = "Goto Char" },
+        },
     },
     -- Auto Pairs
     {
         "m4xshen/autoclose.nvim",
-        config = function()
-            require "autoclose".setup {}
-        end,
-    },
-    -- Outline
-    {
-        "hedyhli/outline.nvim",
-        config = function()
-        end,
+        event = "InsertEnter",
+        main = "autoclose",
+        opts = {},
     },
     -- Last place
     {
         "ethanholz/nvim-lastplace",
-        config = function()
-            vim.api.nvim_create_autocmd("BufEnter", {
-                callback = function()
-                    require "nvim-lastplace".setup {}
-                end,
-            })
-        end,
+        main = "nvim-lastplace",
+        opts = {},
+        event = "BufEnter",
     },
     -- Trouble
     {
@@ -70,49 +61,46 @@ return {
             "nvim-tree/nvim-web-devicons",
             "folke/which-key.nvim",
         },
+        keys = {
+            { "<Leader>te", "<Cmd>Trouble diagnostics toggle win.position=bottom<Cr>", { desc = "Diagnostics" } },
+            { "<Leader>ts", "<Cmd>Trouble symbols toggle win.position=right<Cr>",      { desc = "Symbols" } },
+            { "<Leader>td", "<Cmd>Trouble lsp toggle win.position=right<Cr>",          { desc = "Definitions / References / ..." } },
+            { "<Leader>tq", "<Cmd>Trouble qflist toggle win.position=bottom<Cr>",      { desc = "Quickfix" } },
+            { "<Leader>tl", "<Cmd>Trouble loclist toggle win.position=bottom<Cr>",     { desc = "Location List" } },
+        },
         config = function()
             require "trouble".setup {
                 auto_close = true,
                 focus = true,
                 warn_no_results = false,
             }
-            leovim.mapkey {
-                { "n", "<Leader>te", "<Cmd>Trouble diagnostics toggle win.position=bottom<Cr>", { desc = "Diagnostics" } },
-                { "n", "<Leader>ts", "<Cmd>Trouble symbols toggle win.position=right<Cr>",      { desc = "Symbols" } },
-                { "n", "<Leader>td", "<Cmd>Trouble lsp toggle win.position=right<Cr>",          { desc = "Definitions / References / ..." } },
-                { "n", "<Leader>tq", "<Cmd>Trouble qflist toggle win.position=bottom<Cr>",      { desc = "Quickfix" } },
-                { "n", "<Leader>tl", "<Cmd>Trouble loclist toggle win.position=bottom<Cr>",     { desc = "Location List" } },
-            }
             require "which-key".add {
                 { "<Leader>t", group = "Tree" },
             }
         end,
     },
-    -- Tree
+    -- Files
     {
-        "nvim-tree/nvim-tree.lua",
-        dependencies = "nvim-tree/nvim-web-devicons",
-        config = function()
-            require "nvim-tree".setup {
-                view = {
-                    -- Width
-                    width = 30,
-                },
-                filters = {
-                    -- Show hidden files
-                    dotfiles = false,
-                },
-            }
-            leovim.mapkey {
-                { "n", "<Leader>tt", "<Cmd>NvimTreeToggle<Cr>", desc = "File Tree" },
-                { "n", "<C-n>",      "<Cmd>NvimTreeToggle<Cr>", desc = "File Tree" },
-            }
-        end,
+        "echasnovski/mini.files",
+        dependencies = "echasnovski/mini.nvim",
+        lazy = false,
+        main = "mini.files",
+        opts = {
+            windows = {
+                preview = true,
+                width_preview = 100,
+            },
+        },
+        keys = {
+            { "<C-n>",      "<Cmd>lua MiniFiles.open()<Cr>", desc = "Goto file" },
+            { "<Leader>tt", "<Cmd>lua MiniFiles.open()",     desc = "Goto file" },
+        },
     },
     -- Buffers
     {
         "akinsho/bufferline.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
+        main = "bufferline",
         config = function()
             require "bufferline".setup {}
             leovim.mapkey {
@@ -128,26 +116,33 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "folke/which-key.nvim",
+            "folke/trouble.nvim",
         },
-        config = function()
-            local builtin = require "telescope.builtin"
-            leovim.mapkey {
-                { "n", "<Leader>ff", builtin.find_files, desc = "Find File" },
-                { "n", "<Leader>fw", builtin.live_grep,  desc = "Find Word" },
-                { "n", "<Leader>fb", builtin.buffers,    desc = "Find Buffer" },
+        main = "telescope",
+        keys = function(plug)
+            local builtin = require(plug.main .. ".builtin")
+            return {
+                { "<Leader>ff", builtin.find_files, desc = "Find File" },
+                { "<Leader>fw", builtin.live_grep,  desc = "Find Word" },
+                { "<Leader>fb", builtin.buffers,    desc = "Find Buffer" },
             }
-            require "which-key".add {
-                { "<Leader>f", group = "File" },
-            }
+        end,
+        opts = function()
             -- Trouble
             local open_with_trouble = require "trouble.sources.telescope".open
-            require "telescope".setup {
+
+            return {
                 defaults = {
                     mappings = {
                         i = { ["<c-t>"] = open_with_trouble },
                         n = { ["<c-t>"] = open_with_trouble },
                     },
                 },
+            }
+        end,
+        init = function()
+            require "which-key".add {
+                { "<Leader>f", group = "File" },
             }
         end,
     },
@@ -157,66 +152,64 @@ return {
         config = function()
         end,
     },
-    -- Visual Star Search
-    {
-        "bronson/vim-visual-star-search",
-        config = function()
-        end,
-    },
     -- Undo Tree
     {
         "jiaoshijie/undotree",
         dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-            local undotree = require "undotree"
-            undotree.setup {}
-            leovim.mapkey {
-                { "n", "<Leader>u", undotree.toggle, desc = "Toggle Undo Tree" }
+        main = "undotree",
+        opts = {},
+        keys = function(plug)
+            local undotree = require(plug.main)
+            return {
+                { "<Leader>tu", undotree.toggle, desc = "Toggle Undo Tree" },
             }
         end,
     },
     -- Windows
     {
         "anuvyklack/windows.nvim",
+        event = "VeryLazy",
         dependencies = {
             "anuvyklack/middleclass",
             "anuvyklack/animation.nvim",
         },
-        config = function()
+        main = "windows",
+        opts = {},
+        init = function()
             vim.o.winwidth = 10
             vim.o.winminwidth = 10
             vim.o.equalalways = false
-            require('windows').setup()
-
-            leovim.mapkey {
-                { "n", "<C-w>z", "<Cmd>WindowsMaximize<Cr>", desc = "Maximize" },
-                { "n", "<C-w>=", "<Cmd>WindowsEqualize<Cr>", desc = "Equalize" },
-            }
         end,
+        keys = {
+            { "<C-w>z", "<Cmd>WindowsMaximize<Cr>", desc = "Maximize" },
+            { "<C-w>=", "<Cmd>WindowsEqualize<Cr>", desc = "Equalize" },
+        },
     },
     -- Dap
     {
         "mfussenegger/nvim-dap",
-        config = function()
-            local dap = require "dap"
-
+        dependencies = "folke/which-key.nvim",
+        event = "VeryLazy",
+        main = "dap",
+        init = function()
             require "which-key".add {
                 { "<Leader>b", group = "Debug" },
             }
-
-            leovim.mapkey {
-                { "n", "<Leader>bb", dap.toggle_breakpoint, desc = "Break Point" },
-                { "n", "<Leader>bc", dap.continue,          desc = "Continue" },
+        end,
+        keys = function(plug)
+            local dap = require(plug.main)
+            return {
+                { "<Leader>bb", dap.toggle_breakpoint, desc = "Break Point" },
+                { "<Leader>bc", dap.continue,          desc = "Continue" },
                 {
-                    "n",
                     "<Leader>bw",
                     function()
                         local widgets = require "dap.ui.widgets"
                         widgets.centered_float(widgets.frames)
                     end,
-                    desc = "Look"
+                    desc = "Look",
                 },
             }
         end,
-    }
+    },
 }
