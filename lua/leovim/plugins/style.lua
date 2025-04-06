@@ -48,12 +48,13 @@ return {
     {
         "folke/tokyonight.nvim",
         main = "tokyonight",
+        lazy = false,
+        priority = 1000,
         opts = {
             style = "night",
             transparent = false,
         },
-        config = function(this)
-            require(this.main).setup(this.opts)
+        init = function(this)
             vim.cmd "colorscheme tokyonight"
         end,
     },
